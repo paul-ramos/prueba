@@ -39,6 +39,15 @@ public class Persona  implements UserDetails {
     private Date createdAt;	
     @UpdateTimestamp
     private Date updatedAt;
+    
+    private String token;
+    
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	public long getId() {
 		return id;
 	}

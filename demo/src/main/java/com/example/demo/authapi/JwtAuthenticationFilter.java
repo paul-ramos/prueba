@@ -46,8 +46,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 		try {
 			final String jwt = authHeader.substring(7);
+			System.out.println("jwt7        es  " +jwt);
+			System.out.println("jwt        es  " +authHeader);
 			final String userEmail = jwtService.extractUsername(jwt);
-			System.out.println("jwt        es  " +jwt);
+			
 			System.out.println("userEmail  es  " +userEmail);
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -69,10 +71,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		} catch (Exception exception) {
 			System.out.println("ExcepcionJWT " + exception.getMessage());
 			System.out.println("ExcepcionJWT " + exception.getLocalizedMessage());
+			exception.printStackTrace();
 			handlerExceptionResolver.resolveException(request, response, null, exception);
 		}
 	 
-		filterChain.doFilter(request, response);
+		 
 	}
 	
 }
